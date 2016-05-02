@@ -38,7 +38,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Library\Components\Component.cs" />
+    <Compile Include="Library\Components\TransformComponent.cs" />
+    <Compile Include="Library\GameObjects\GameObject.cs" />
+    <Compile Include="Library\Components\SpriteComponent.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

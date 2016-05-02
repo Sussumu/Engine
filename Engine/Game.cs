@@ -7,13 +7,17 @@ namespace Engine
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Game : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static Game Instance;
 
-        public Game1()
+        GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch { get; set; }
+
+        public Game()
         {
+            Instance = this;
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
