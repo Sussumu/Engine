@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Engine.Library.Scenes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Engine
 {
@@ -9,7 +9,11 @@ namespace Engine
     /// </summary>
     public class Game : Microsoft.Xna.Framework.Game
     {
+        // An easy way to access its methods
         public static Game Instance;
+
+        // A scene always has to be instanced in game
+        public Scene ActualScene { get; set; }
 
         GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch { get; set; }
@@ -30,7 +34,7 @@ namespace Engine
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            ActualScene = new StartupScene();
 
             base.Initialize();
         }
@@ -44,7 +48,7 @@ namespace Engine
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            ActualScene.Load();
         }
 
         /// <summary>
@@ -53,7 +57,7 @@ namespace Engine
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            ActualScene.Unload(null);
         }
 
         /// <summary>
@@ -63,10 +67,7 @@ namespace Engine
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
+            ActualScene.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -77,9 +78,8 @@ namespace Engine
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            ActualScene.ClearScreen();
+            ActualScene.Draw(gameTime);
 
             base.Draw(gameTime);
         }

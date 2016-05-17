@@ -1,0 +1,15 @@
+﻿///////////////////////////////////////////////////////////////////////////////
+/////////////////// >> SORRY LONDON IS NOT MY FIRST CITY << ///////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+TODO
+16/05/16
+- Create a config file and load the options from there like IsMouseVisible
+variable and screen resolution.
+
+RANDOMTHOUGHTS
+17/05/16
+- Game loads StartupScene to initialize global resources. Specific ones 
+will be loaded and unloaded for each scene (yaay!). The idea is to decouple 
+everything from Game class, but the GraphicsDevice and SpriteBatch 
+references which looks harder or even not doable.

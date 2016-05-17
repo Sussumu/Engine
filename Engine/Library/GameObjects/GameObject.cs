@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Engine.Library.GameObjects
 {
-    class GameObject
+    public abstract class GameObject
     {
-        public string Name { get; set; }
-        public List<Component> Components {get;set;}
+        public abstract string Name { get; set; }
+        List<Component> Components { get; set; }
     }
 }

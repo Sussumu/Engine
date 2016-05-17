@@ -43,6 +43,8 @@
     <Compile Include="Library\GameObjects\GameObject.cs" />
     <Compile Include="Library\Components\SpriteComponent.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Library\Scenes\StartupScene.cs" />
+    <Compile Include="Library\Scenes\Scene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TodoAndRandomThoughts.txt" />
     <EmbeddedResource Include="Icon.ico" />
     <Content Include="OpenTK.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
