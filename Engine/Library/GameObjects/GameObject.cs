@@ -7,5 +7,6 @@ namespace Engine.Library.GameObjects
     {
         public abstract string Name { get; set; }
         List<Component> Components { get; set; }
+        List<Mask> Masks { get; set; }
     }
 }
