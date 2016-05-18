@@ -3,17 +3,59 @@
 namespace Engine.Library.Components
 {
     /// <summary>
-    /// Handles the position and rotation of your object
+    /// Handles the position, rotation and transformations of your object
     /// </summary>
     class TransformComponent : Component
     {
-        public Vector2 Position { get; set; }
-        public float Rotation { get; set; }
+        #region Variables
 
-        public TransformComponent(Vector2? position, float? rotation)
+        private Vector2 position;
+        private float rotation;
+
+        #endregion
+
+        #region Getters
+
+        public Vector2 GetPosition() { return position; }
+        public float GetRotation() { return rotation; }
+
+        #endregion
+
+        #region Constructors
+
+        public TransformComponent(Vector2 position)
         {
-            Position = position ?? Vector2.Zero;
-            Rotation = rotation ?? 0.0f;
+            this.position = position;
+            rotation = 0.0f;
         }
+
+        public TransformComponent(Vector2 position, float rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
+        }
+
+        #endregion
+
+        #region Auxiliary Methods
+
+        public void Translate(float x, float y)
+        {
+            position.X += x;
+            position.Y += y;
+        }
+
+        public void TranslateAbsolute(float x, float y)
+        {
+            position.X = x;
+            position.Y = y;
+        }
+
+        public void Rotate(float angle)
+        {
+            rotation += angle;
+        }
+
+        #endregion
     }
 }

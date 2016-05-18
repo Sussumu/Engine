@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Engine.Library.GameObjects;
 using Microsoft.Xna.Framework;
-
 namespace Engine.Library.Scenes
 {
     /// <summary>

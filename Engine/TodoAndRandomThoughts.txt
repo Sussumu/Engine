@@ -3,13 +3,39 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 TODO
+
 16/05/16
-- Create a config file and load the options from there like IsMouseVisible
+	Create a config file and load the options from there like IsMouseVisible
 variable and screen resolution.
 
+18/05/16
+	Pivot variable stuff.
+
+-------------------------------------------------------------------------------
+
 RANDOMTHOUGHTS
+
 17/05/16
-- Game loads StartupScene to initialize global resources. Specific ones 
-will be loaded and unloaded for each scene (yaay!). The idea is to decouple 
-everything from Game class, but the GraphicsDevice and SpriteBatch 
-references which looks harder or even not doable.
+	Game loads StartupScene to initialize global resources. Specific ones will 
+be loaded and unloaded for each scene (yaay!). The idea is to decouple 
+everything from Game class, but the GraphicsDevice and SpriteBatch references 
+which looks harder or even not doable.
+
+18/05/16
+	While resuming the work on TransformComponent, I noted that constructors can
+be tricky. I want to limit the programmer - which, by now, is only me - to 
+certain behaviors. If a >> Transform << component is needed, then sounds 
+reasonable that a position is obligatory. But what if it is not? Maybe you just
+want to use some rotations methods to create a directional light, which is 
+fully independent of a position. Well, then use a Vector2.Zero and you're good 
+to go :)
+	Also, where the pivot variable should belong? We have to have a Vector2 
+to know where's the center of our object. Then we can do this two things: to 
+rotate a texture around there and to calculate distances using radius. For our 
+first case, the variable belongs to SpriteComponent, but for the later one, to 
+our TransformComponent. Looks like it's a transform thing, but then we have to 
+return its value every time we call SpriteComponent.Draw(), which needs it to 
+rotate the texture. Or maybe this is perfectly fine! I'm pretty sure I'm missing 
+something here.
+	And method "TranslateAbsolute" has a terrible name. Teleport is a better one,
+but sounds... funny.
