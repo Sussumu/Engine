@@ -43,6 +43,8 @@
     <Compile Include="Library\GameObjects\GameObject.cs" />
     <Compile Include="Library\Components\SpriteComponent.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Library\GameObjects\Mask.cs" />
+    <Compile Include="Library\GUI\Core\Primitive.cs" />
     <Compile Include="Library\Scenes\StartupScene.cs" />
     <Compile Include="Library\Scenes\Scene.cs" />
     <Compile Include="Program.cs" />
@@ -71,6 +73,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
