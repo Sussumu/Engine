@@ -6,7 +6,7 @@ using System;
 
 namespace Engine.Library.GUI.Core
 {
-    class Primitive
+    class PrimitiveDrawing
     {
         GraphicsDevice graphicsDevice;
         BasicEffect effect;
@@ -22,7 +22,7 @@ namespace Engine.Library.GUI.Core
         PrimitiveType primitiveType;
         int numVertsPerPrimitive;
 
-        public Primitive(GraphicsDevice graphicsDevice)
+        public PrimitiveDrawing(GraphicsDevice graphicsDevice)
         {
             this.graphicsDevice = graphicsDevice;
 

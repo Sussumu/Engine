@@ -39,3 +39,7 @@ rotate the texture. Or maybe this is perfectly fine! I'm pretty sure I'm missing
 something here.
 	And method "TranslateAbsolute" has a terrible name. Teleport is a better one,
 but sounds... funny.
+
+19/05/16
+	Oh, looks like making an engine is about choosing what bad decision you're 
+going to take.
