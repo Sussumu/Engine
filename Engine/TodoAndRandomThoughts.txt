@@ -9,7 +9,8 @@ TODO
 variable and screen resolution.
 
 18/05/16
-	Pivot variable stuff.
+	Pivot variable stuff. On 19/05, I added it to TransformComponent, though I'm 
+not really sure if this is the right place. More about this below. 
 
 -------------------------------------------------------------------------------
 
@@ -39,3 +40,15 @@ rotate the texture. Or maybe this is perfectly fine! I'm pretty sure I'm missing
 something here.
 	And method "TranslateAbsolute" has a terrible name. Teleport is a better one,
 but sounds... funny.
+
+19/05/16
+	Transform just stores a single position, treating the object like a particle, 
+not a square or a car that has a property like area and, therefore, a center.
+So, how can I set the pivot without knowing the object's size before? Ok, lets 
+just set it to the same value of position. Now, add a Sprite to the object and 
+let it draw itself. But this requires a vector2 called origin to be able to rotate 
+around it. Origin is set to position, so it'll rotate around its top-left corner, 
+while I assume most of time the rotation should be around its center...
+	Oh, looks like making an engine is about choosing what bad decision you're 
+going to take. As I just read on Game Programming Patterns, "in architecture, 
+we’re most often trying to make systems better, not perfect."

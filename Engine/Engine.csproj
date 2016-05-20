@@ -44,7 +44,9 @@
     <Compile Include="Library\Components\SpriteComponent.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Library\GameObjects\Mask.cs" />
-    <Compile Include="Library\GUI\Core\Primitive.cs" />
+    <Compile Include="Library\GUI\Core\Button.cs" />
+    <Compile Include="Library\GUI\Core\PrimitiveDrawing.cs" />
+    <Compile Include="Library\GUI\Core\Rectangle.cs" />
     <Compile Include="Library\Scenes\StartupScene.cs" />
     <Compile Include="Library\Scenes\Scene.cs" />
     <Compile Include="Program.cs" />
