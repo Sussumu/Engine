@@ -2,15 +2,30 @@
 using Engine.Library.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using static Engine.Library.Input.MouseHandler;
 
 namespace Engine.Library.GUI.Core
 {
+    enum ButtonState
+    {
+        NONE,
+        HOVER,      // Pointer is over button
+        PRESSED,    // Mouse click
+        CLICKED     // Mouse click and release
+    }
+
     class Button : Rectangle
     {
+        #region Variables
+
         float layerDepth;
         PrimitiveDrawing primitiveDrawing;
         SpriteComponent backgroundImage;
         Vector2[] vertices;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// Creates a monocolored button
@@ -24,13 +39,15 @@ namespace Engine.Library.GUI.Core
 
             primitiveDrawing = new PrimitiveDrawing(Game.Instance.GraphicsDevice);
             backgroundImage = null;
-            vertices = new Vector2[3];
+            vertices = new Vector2[4];
             vertices[0] = new Vector2(x, y);
             vertices[1] = new Vector2(x, y + height);
             vertices[2] = new Vector2(x + width, y + height);
             vertices[3] = new Vector2(x + width, y);
 
             this.layerDepth = layerDepth;
+
+            MouseClickHandler.
         }
 
         /// <summary>
@@ -50,16 +67,18 @@ namespace Engine.Library.GUI.Core
             this.layerDepth = layerDepth;
         }
 
+        #endregion
+
         public void Draw()
         {
-            // If the button is monocolored
+            // If it is monocolored
             if (backgroundImage == null)
             {
                 primitiveDrawing.Begin(PrimitiveType.TriangleList);
                 primitiveDrawing.AddVertices(vertices, color);
                 primitiveDrawing.End();
             }
-            // If the button has an image
+            // If it has an image
             else
             {
                 backgroundImage.Draw(transform.GetPosition(), color, transform.GetRotation(),

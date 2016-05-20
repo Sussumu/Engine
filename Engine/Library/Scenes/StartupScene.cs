@@ -13,7 +13,10 @@ namespace Engine.Library.Scenes
     {
         public override SceneState ActualState { get; set; }
         public override List<GameObject> GameObjects { get; set; }
-        
+
+        Button button = new Button(200, 200, 200, 80, 0, "texture", 0);
+        Button button2 = new Button(200, 300, 200, 80, 0, Color.Crimson, 0);
+
         public override void Load()
         {
 
@@ -26,7 +29,7 @@ namespace Engine.Library.Scenes
 
         public override void ClearScreen()
         {
-            Game.Instance.GraphicsDevice.Clear(Color.AliceBlue);
+            Game.Instance.GraphicsDevice.Clear(Color.Wheat);
         }
 
         public override void Update(GameTime gameTime)
@@ -36,7 +39,11 @@ namespace Engine.Library.Scenes
 
         public override void Draw(GameTime gameTime)
         {
+            Game.Instance.spriteBatch.Begin();
+            button.Draw();
+            Game.Instance.spriteBatch.End();
 
+            button2.Draw();
         }
     }
 }
