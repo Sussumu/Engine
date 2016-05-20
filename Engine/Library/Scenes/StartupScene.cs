@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Engine.Library.GameObjects;
 using Microsoft.Xna.Framework;
+using Engine.Library.GUI.Core;
+using Engine;
+
 namespace Engine.Library.Scenes
 {
     /// <summary>
@@ -13,7 +16,7 @@ namespace Engine.Library.Scenes
         
         public override void Load()
         {
-            
+
         }
 
         public override void Unload(Scene newScene)
@@ -33,7 +36,7 @@ namespace Engine.Library.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-            
+
         }
     }
 }

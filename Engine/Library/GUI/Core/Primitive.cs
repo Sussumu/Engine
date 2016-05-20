@@ -6,6 +6,9 @@ using System;
 
 namespace Engine.Library.GUI.Core
 {
+    /// <summary>
+    /// Handles lines and triangles
+    /// </summary>
     class Primitive
     {
         GraphicsDevice graphicsDevice;
