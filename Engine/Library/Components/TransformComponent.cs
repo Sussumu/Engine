@@ -31,7 +31,7 @@ namespace Engine.Library.Components
         {
             this.position = position;
             rotation = 0.0f;
-            pivot = position;
+            pivot = Vector2.Zero;
             scale = new Vector2(1, 1);
         }
 
@@ -39,7 +39,7 @@ namespace Engine.Library.Components
         {
             this.position = position;
             this.rotation = rotation;
-            pivot = position;
+            pivot = Vector2.Zero;
             scale = new Vector2(1, 1);
         }
 

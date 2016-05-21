@@ -52,3 +52,8 @@ while I assume most of time the rotation should be around its center...
 	Oh, looks like making an engine is about choosing what bad decision you're 
 going to take. As I just read on Game Programming Patterns, "in architecture, 
 we’re most often trying to make systems better, not perfect."
+
+20/05/16
+	Documentation told me that the Origin vec2 default value is (0,0) and 
+represents the top-left corner. Just realized that origin is specified in 
+relative, not absolute coordinates!
