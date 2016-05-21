@@ -13,10 +13,12 @@ namespace Engine.Library.Scenes
     {
         public override SceneState ActualState { get; set; }
         public override List<GameObject> GameObjects { get; set; }
-        
+
+        Button button;
+
         public override void Load()
         {
-
+            button = new Button(20, 20, 150, 80, 0, Color.Firebrick, 1);
         }
 
         public override void Unload(Scene newScene)
@@ -36,7 +38,7 @@ namespace Engine.Library.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-
+            button.Draw();
         }
     }
 }

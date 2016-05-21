@@ -24,7 +24,7 @@ namespace Engine.Library.GUI.Core
 
             primitiveDrawing = new PrimitiveDrawing(Game.Instance.GraphicsDevice);
             backgroundImage = null;
-            vertices = new Vector2[3];
+            vertices = new Vector2[4];
             vertices[0] = new Vector2(x, y);
             vertices[1] = new Vector2(x, y + height);
             vertices[2] = new Vector2(x + width, y + height);
