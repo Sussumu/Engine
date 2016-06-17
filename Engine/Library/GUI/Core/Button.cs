@@ -13,16 +13,15 @@ namespace Engine.Library.GUI.Core
         CLICKED     // Mouse click and release
     }
 
-    class Button : Rectangle, IGUIElement
+    class Button : GUIElement
     {
         #region Variables
-
-        public bool Visible = true;
-
-        float layerDepth;
+        
         PrimitiveDrawing primitiveDrawing;
         SpriteComponent backgroundImage;
         Vector2[] vertices;
+
+        ButtonState buttonState = ButtonState.NONE;
                 
         #endregion
 
@@ -68,7 +67,7 @@ namespace Engine.Library.GUI.Core
 
         #endregion
         
-        public void Draw()
+        public override void Draw()
         {
             if (Visible)
             {

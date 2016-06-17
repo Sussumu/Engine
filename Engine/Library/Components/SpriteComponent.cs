@@ -21,6 +21,9 @@ namespace Engine.Library.Graphics
             Game.Instance.spriteBatch.Draw(sprite, position, null, color, rotation, origin, scale, effects, layerDepth);
         }
 
+        /// <summary>
+        /// Draw() that allows to texture resizing
+        /// </summary>
         public void Draw(Vector2 position, int width, int height, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth)
         {
             Game.Instance.spriteBatch.Draw(sprite, new Rectangle((int)position.X, (int)position.Y, width, height),

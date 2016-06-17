@@ -10,11 +10,11 @@ namespace Engine.Library.Input
         MouseState mouseState, oldMouseState;
 
         // Event to mouse clicks
-        public delegate void MouseClickHandler(Button button, MouseState mouseState);
+        public delegate void MouseClickHandler(GUIElement button, MouseState mouseState);
         public event MouseClickHandler Click;
         public event MouseClickHandler Hover;
 
-        public void Update(List<Button> GUIElements)
+        public void Update(List<GUIElement> GUIElements)
         {
             mouseState = Mouse.GetState();
 
@@ -22,22 +22,22 @@ namespace Engine.Library.Input
             if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released &&
                 oldMouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
             {
-                foreach (Button button in GUIElements)
+                foreach (GUIElement element in GUIElements)
                 {
-                    if (button.Contains(new Vector2(mouseState.X, mouseState.Y)))
+                    if (element.Contains(new Vector2(mouseState.X, mouseState.Y)))
                     {
-                        OnClick(button, mouseState);
+                        OnClick(element, mouseState);
                     }
                 }
             }
             // Hover
             else if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
             {
-                foreach (Button button in GUIElements)
+                foreach (GUIElement element in GUIElements)
                 {
-                    if (button.Contains(new Vector2(mouseState.X, mouseState.Y)))
+                    if (element.Contains(new Vector2(mouseState.X, mouseState.Y)))
                     {
-                        OnHover(button, mouseState);
+                        OnHover(element, mouseState);
                     }
                 }
             }
@@ -46,15 +46,15 @@ namespace Engine.Library.Input
         }
 
         // Raise the event to mouse click
-        protected virtual void OnClick(Button button, MouseState mouseState)
+        protected virtual void OnClick(GUIElement element, MouseState mouseState)
         {
-            Click(button, mouseState);
+            Click(element, mouseState);
         }
 
         // Raise the event to mouse hover
-        protected virtual void OnHover(Button button, MouseState mouseState)
+        protected virtual void OnHover(GUIElement element, MouseState mouseState)
         {
-            Hover(button, mouseState);
+            Hover(element, mouseState);
         }
     }
 }

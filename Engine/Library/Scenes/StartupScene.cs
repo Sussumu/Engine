@@ -2,10 +2,9 @@
 using Engine.Library.GameObjects;
 using Microsoft.Xna.Framework;
 using Engine.Library.GUI.Core;
-using Engine;
 using Engine.Library.Input;
 using Microsoft.Xna.Framework.Input;
-using System;
+using Engine.Library.Components;
 
 namespace Engine.Library.Scenes
 {
@@ -18,16 +17,17 @@ namespace Engine.Library.Scenes
         public override List<GameObject> GameObjects { get; set; }
 
         MouseHandler mouseHandler;
-        public List<Button> GUIElements { get; set; }
+        public List<GUIElement> GUIElements { get; set; }
         Button button;
         Button button2;
         Button button3;
+        Label label;
 
         public override void Load()
         {
             Game.Instance.IsMouseVisible = true;
             mouseHandler = new MouseHandler();
-            GUIElements = new List<Button>();
+            GUIElements = new List<GUIElement>();
 
             button = new Button(200, 200, 200, 80, 0, "texture", 0);
             button2 = new Button(200, 300, 200, 80, 0, Color.Crimson, 0);
@@ -35,6 +35,10 @@ namespace Engine.Library.Scenes
             GUIElements.Add(button);
             GUIElements.Add(button2);
             GUIElements.Add(button3);
+
+            TransformComponent transform = new TransformComponent(new Vector2(100, 100));
+            label = new Label("teste teste teste", "defaultFont", Color.Crimson, transform);
+            GUIElements.Add(label);
 
             mouseHandler.Click += new MouseHandler.MouseClickHandler(HandleClick);
             mouseHandler.Hover += new MouseHandler.MouseClickHandler(HandleHover);
@@ -58,16 +62,16 @@ namespace Engine.Library.Scenes
         public override void Draw(GameTime gameTime)
         {
             Game.Instance.spriteBatch.Begin();
-            foreach (var button in GUIElements)
+            foreach (GUIElement element in GUIElements)
             {
-                button.Draw();
+                element.Draw();
             }
             Game.Instance.spriteBatch.End();
 
             //button2.Draw();
         }
 
-        private void HandleClick(Button listener, MouseState mouseState)
+        private void HandleClick(GUIElement listener, MouseState mouseState)
         {
             if (listener.Equals(button))
             {
@@ -79,15 +83,11 @@ namespace Engine.Library.Scenes
             }
         }
 
-        private void HandleHover(Button listener, MouseState mouseState)
+        private void HandleHover(GUIElement listener, MouseState mouseState)
         {
-            if (listener.Equals(button))
+            if (listener.Equals(label))
             {
-                listener.Visible = !listener.Visible;
-            }
-            if (listener.Equals(button3))
-            {
-                listener.Visible = !listener.Visible;
+                listener.transform.Scale(1.1f);
             }
         }
     }

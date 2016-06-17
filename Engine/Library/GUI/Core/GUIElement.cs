@@ -1,15 +1,26 @@
 ﻿using Engine.Library.Components;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace Engine.Library.GUI.Core
 {
-    class Rectangle
+    class GUIElement
     {
-        protected TransformComponent transform;
+        public bool Visible = true;
+        protected float layerDepth;
+
+        public TransformComponent transform;
         protected int width;
         protected int height;
         protected Color color;
 
+        protected List<GUIElement> Childs { get; set; }
+
+        public GUIElement()
+        {
+            Childs = new List<GUIElement>();
+        }
+        
         /// <summary>
         /// Returns if the point is inside the polygon
         /// </summary>
@@ -26,6 +37,11 @@ namespace Engine.Library.GUI.Core
         private float IsLeft(Vector2 A, Vector2 B, Vector2 C)
         {
             return ((B.X - A.X) * (C.Y - A.Y) - (C.X - A.X) * (B.Y - A.Y));
+        }
+
+        // Needs to be overrided
+        public virtual void Draw()
+        {
         }
     }
 }
