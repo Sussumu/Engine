@@ -12,19 +12,32 @@ namespace Engine.Library.Input
         // Event to mouse clicks
         public delegate void MouseClickHandler(Button button, MouseState mouseState);
         public event MouseClickHandler Click;
-        
+        public event MouseClickHandler Hover;
+
         public void Update(List<Button> GUIElements)
         {
             mouseState = Mouse.GetState();
 
-            if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed &&
-                oldMouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
+            // Click
+            if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released &&
+                oldMouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
             {
                 foreach (Button button in GUIElements)
                 {
                     if (button.Contains(new Vector2(mouseState.X, mouseState.Y)))
                     {
                         OnClick(button, mouseState);
+                    }
+                }
+            }
+            // Hover
+            else if (mouseState.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
+            {
+                foreach (Button button in GUIElements)
+                {
+                    if (button.Contains(new Vector2(mouseState.X, mouseState.Y)))
+                    {
+                        OnHover(button, mouseState);
                     }
                 }
             }
@@ -36,6 +49,12 @@ namespace Engine.Library.Input
         protected virtual void OnClick(Button button, MouseState mouseState)
         {
             Click(button, mouseState);
+        }
+
+        // Raise the event to mouse hover
+        protected virtual void OnHover(Button button, MouseState mouseState)
+        {
+            Hover(button, mouseState);
         }
     }
 }

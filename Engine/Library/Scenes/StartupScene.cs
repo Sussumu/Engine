@@ -31,12 +31,13 @@ namespace Engine.Library.Scenes
 
             button = new Button(200, 200, 200, 80, 0, "texture", 0);
             button2 = new Button(200, 300, 200, 80, 0, Color.Crimson, 0);
-            button3 = new Button(200, 450, 180, 120, 0, "texture", 0);
+            button3 = new Button(200, 350, 180, 120, 0, "texture", 0);
             GUIElements.Add(button);
             GUIElements.Add(button2);
             GUIElements.Add(button3);
 
             mouseHandler.Click += new MouseHandler.MouseClickHandler(HandleClick);
+            mouseHandler.Hover += new MouseHandler.MouseClickHandler(HandleHover);
         }
 
         public override void Unload(Scene newScene)
@@ -67,6 +68,18 @@ namespace Engine.Library.Scenes
         }
 
         private void HandleClick(Button listener, MouseState mouseState)
+        {
+            if (listener.Equals(button))
+            {
+                listener.Visible = !listener.Visible;
+            }
+            if (listener.Equals(button3))
+            {
+                listener.Visible = !listener.Visible;
+            }
+        }
+
+        private void HandleHover(Button listener, MouseState mouseState)
         {
             if (listener.Equals(button))
             {

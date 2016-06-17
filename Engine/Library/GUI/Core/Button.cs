@@ -2,7 +2,6 @@
 using Engine.Library.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Engine.Library.GUI.Core
 {
@@ -83,7 +82,7 @@ namespace Engine.Library.GUI.Core
                 // If it has an image
                 else
                 {
-                    backgroundImage.Draw(transform.GetPosition(), color, transform.GetRotation(),
+                    backgroundImage.Draw(transform.GetPosition(), width, height, color, transform.GetRotation(),
                         transform.GetPivot(), transform.GetScale(), SpriteEffects.None, layerDepth);
                 }
             }
