@@ -2,7 +2,7 @@
 using Engine.Library.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static Engine.Library.Input.MouseHandler;
+using Microsoft.Xna.Framework.Input;
 
 namespace Engine.Library.GUI.Core
 {
@@ -14,15 +14,17 @@ namespace Engine.Library.GUI.Core
         CLICKED     // Mouse click and release
     }
 
-    class Button : Rectangle
+    class Button : Rectangle, IGUIElement
     {
         #region Variables
+
+        public bool Visible = true;
 
         float layerDepth;
         PrimitiveDrawing primitiveDrawing;
         SpriteComponent backgroundImage;
         Vector2[] vertices;
-
+                
         #endregion
 
         #region Constructors
@@ -34,7 +36,7 @@ namespace Engine.Library.GUI.Core
         {
             transform = new TransformComponent(new Vector2(x, y), rotation);
             this.width = width;
-            this.width = width;
+            this.height = height;
             this.color = color;
 
             primitiveDrawing = new PrimitiveDrawing(Game.Instance.GraphicsDevice);
@@ -46,10 +48,8 @@ namespace Engine.Library.GUI.Core
             vertices[3] = new Vector2(x + width, y);
 
             this.layerDepth = layerDepth;
-
-            MouseClickHandler.
         }
-
+        
         /// <summary>
         /// Creates a button with background image
         /// </summary>
@@ -58,7 +58,7 @@ namespace Engine.Library.GUI.Core
         {
             transform = new TransformComponent(new Vector2(x, y), rotation);
             this.width = width;
-            this.width = width;
+            this.height = height;
             color = Color.White;
 
             primitiveDrawing = null;
@@ -68,21 +68,24 @@ namespace Engine.Library.GUI.Core
         }
 
         #endregion
-
+        
         public void Draw()
         {
-            // If it is monocolored
-            if (backgroundImage == null)
+            if (Visible)
             {
-                primitiveDrawing.Begin(PrimitiveType.TriangleList);
-                primitiveDrawing.AddVertices(vertices, color);
-                primitiveDrawing.End();
-            }
-            // If it has an image
-            else
-            {
-                backgroundImage.Draw(transform.GetPosition(), color, transform.GetRotation(),
-                    transform.GetPivot(), transform.GetScale(), SpriteEffects.None, layerDepth);
+                // If it is monocolored
+                if (backgroundImage == null)
+                {
+                    primitiveDrawing.Begin(PrimitiveType.TriangleList);
+                    primitiveDrawing.AddVertices(vertices, color);
+                    primitiveDrawing.End();
+                }
+                // If it has an image
+                else
+                {
+                    backgroundImage.Draw(transform.GetPosition(), color, transform.GetRotation(),
+                        transform.GetPivot(), transform.GetScale(), SpriteEffects.None, layerDepth);
+                }
             }
         }
     }
