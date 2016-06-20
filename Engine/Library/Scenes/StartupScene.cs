@@ -17,10 +17,11 @@ namespace Engine.Library.Scenes
         public override List<GameObject> GameObjects { get; set; }
 
         MouseHandler mouseHandler;
-        public List<GUIElement> GUIElements { get; set; }
-        Button bishop;
-        Button knight;
-        Button board;
+
+        public List<GUIElement> GUIElements;
+        Image bishop;
+        Image knight;
+        Image board;
         Label label;
 
         public override void Load()
@@ -29,16 +30,15 @@ namespace Engine.Library.Scenes
             mouseHandler = new MouseHandler();
             GUIElements = new List<GUIElement>();
 
-            bishop = new Button(200, 200, 50, 50, 0, "Bishop", 1) { isDraggable = true };
-            knight = new Button(200, 350, 50, 50, 0, "Knight", 1) { isDraggable = true };
-            board = new Button(40, 40, 600, 600, 0, "ChessBoard", 0);
+            bishop = new Image(200, 200, 50, 50, 0, "Bishop", 1) { isDraggable = true };
+            knight = new Image(200, 350, 50, 50, 0, "Knight", 1) { isDraggable = true };
+            board = new Image(0, 0, 600, 600, 0, "ChessBoard", 0);
             GUIElements.Add(board);
             GUIElements.Add(bishop);
             GUIElements.Add(knight);
             
-
-            TransformComponent transform = new TransformComponent(new Vector2(20, 20));
-            label = new Label("", "defaultFont", Color.Crimson, transform);
+            TransformComponent transform = new TransformComponent(new Vector2(10, 10));
+            label = new Label("Teste (:", "defaultFont", Color.Crimson, transform);
             GUIElements.Add(label);
 
             mouseHandler.Click += new MouseHandler.MouseClickHandler(HandleClick);

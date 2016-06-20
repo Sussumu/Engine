@@ -46,6 +46,7 @@
     <Compile Include="Library\GameObjects\Mask.cs" />
     <Compile Include="Library\GUI\Core\Button.cs" />
     <Compile Include="Library\GUI\Core\GUIElement.cs" />
+    <Compile Include="Library\GUI\Core\Image.cs" />
     <Compile Include="Library\GUI\Core\Label.cs" />
     <Compile Include="Library\GUI\Core\PrimitiveDrawing.cs" />
     <Compile Include="Library\Input\MouseHandler.cs" />
