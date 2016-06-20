@@ -36,6 +36,10 @@ namespace Engine
         {
             ActualScene = new StartupScene();
 
+            graphics.PreferredBackBufferWidth = 600;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.ApplyChanges();
+
             base.Initialize();
         }
 

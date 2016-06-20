@@ -6,8 +6,12 @@ namespace Engine.Library.GUI.Core
 {
     class GUIElement
     {
+        #region Variables
+
         public bool Visible = true;
         protected float layerDepth;
+
+        public bool isDraggable = false;
 
         public TransformComponent transform;
         protected int width;
@@ -15,6 +19,8 @@ namespace Engine.Library.GUI.Core
         protected Color color;
 
         protected List<GUIElement> Childs { get; set; }
+
+        #endregion
 
         public GUIElement()
         {

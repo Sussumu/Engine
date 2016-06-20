@@ -18,9 +18,9 @@ namespace Engine.Library.Scenes
 
         MouseHandler mouseHandler;
         public List<GUIElement> GUIElements { get; set; }
-        Button button;
-        Button button2;
-        Button button3;
+        Button bishop;
+        Button knight;
+        Button board;
         Label label;
 
         public override void Load()
@@ -29,19 +29,21 @@ namespace Engine.Library.Scenes
             mouseHandler = new MouseHandler();
             GUIElements = new List<GUIElement>();
 
-            button = new Button(200, 200, 200, 80, 0, "texture", 0);
-            button2 = new Button(200, 300, 200, 80, 0, Color.Crimson, 0);
-            button3 = new Button(200, 350, 180, 120, 0, "texture", 0);
-            GUIElements.Add(button);
-            GUIElements.Add(button2);
-            GUIElements.Add(button3);
+            bishop = new Button(200, 200, 50, 50, 0, "Bishop", 1) { isDraggable = true };
+            knight = new Button(200, 350, 50, 50, 0, "Knight", 1) { isDraggable = true };
+            board = new Button(40, 40, 600, 600, 0, "ChessBoard", 0);
+            GUIElements.Add(board);
+            GUIElements.Add(bishop);
+            GUIElements.Add(knight);
+            
 
-            TransformComponent transform = new TransformComponent(new Vector2(100, 100));
-            label = new Label("teste teste teste", "defaultFont", Color.Crimson, transform);
+            TransformComponent transform = new TransformComponent(new Vector2(20, 20));
+            label = new Label("", "defaultFont", Color.Crimson, transform);
             GUIElements.Add(label);
 
             mouseHandler.Click += new MouseHandler.MouseClickHandler(HandleClick);
             mouseHandler.Hover += new MouseHandler.MouseClickHandler(HandleHover);
+            mouseHandler.Drag += new MouseHandler.MouseDragHandler(HandleDrag);
         }
 
         public override void Unload(Scene newScene)
@@ -51,7 +53,7 @@ namespace Engine.Library.Scenes
 
         public override void ClearScreen()
         {
-            Game.Instance.GraphicsDevice.Clear(Color.Wheat);
+            Game.Instance.GraphicsDevice.Clear(Color.White);
         }
 
         public override void Update(GameTime gameTime)
@@ -67,28 +69,26 @@ namespace Engine.Library.Scenes
                 element.Draw();
             }
             Game.Instance.spriteBatch.End();
-
-            //button2.Draw();
         }
 
         private void HandleClick(GUIElement listener, MouseState mouseState)
         {
-            if (listener.Equals(button))
+        }
+
+        private void HandleDrag(GUIElement listener, int xRel, int yRel)
+        {
+            if (listener.Equals(bishop))
             {
-                listener.Visible = !listener.Visible;
+                listener.transform.Translate(xRel, yRel);
             }
-            if (listener.Equals(button3))
+            if (listener.Equals(knight))
             {
-                listener.Visible = !listener.Visible;
+                listener.transform.Translate(xRel, yRel);
             }
         }
 
         private void HandleHover(GUIElement listener, MouseState mouseState)
         {
-            if (listener.Equals(label))
-            {
-                listener.transform.Scale(1.1f);
-            }
         }
     }
 }
