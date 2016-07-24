@@ -1,3 +1,7 @@
-#Monogame Engine
+#Poke-Mono
 
-Small engine project to learn [Monogame](https://github.com/mono/MonoGame). It might be useful someday (:
+[Monogame](https://github.com/mono/MonoGame) engine to recreate the good old Pokémon GBA experience.
+
+
+###History
+Started as a general purpose engine until we all got caught by the pkmn hype.
